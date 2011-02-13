@@ -1,0 +1,6 @@
+django
+south
+pil
+tweepy
+redis
+psycopg2
