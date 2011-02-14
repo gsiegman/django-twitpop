@@ -100,8 +100,12 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.admin',
     'south',
+    'djcelery',
     'twitpop',
 )
+
+import djcelery
+djcelery.setup_loader()
 
 try:
     from local_settings import *

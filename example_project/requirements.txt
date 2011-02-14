@@ -4,4 +4,5 @@ pil
 tweepy
 redis
 psycopg2
-Celery==2.2.3
+django-celery==2.2.3
+
