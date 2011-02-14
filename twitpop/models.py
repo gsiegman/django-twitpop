@@ -6,8 +6,8 @@ from django.db import models
 class TwitterSearchTerm(models.Model):
     term = models.CharField(max_length=140, unique=True)
     
-    #def __unicode__(self):
-    #    return self.term
+    def __unicode__(self):
+        return self.term
     
     def save(self, *args, **kwargs):
         # @@@ redis connection needs to be centralized
