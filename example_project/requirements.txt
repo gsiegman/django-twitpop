@@ -1,6 +1,7 @@
-django
-south
+django==1.2.5
+south==0.7.3
 pil
 tweepy
 redis
 psycopg2
+Celery==2.2.3
