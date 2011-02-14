@@ -1,6 +1,8 @@
 import os
 import sys
 
+import djcelery
+djcelery.setup_loader()
 
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 sys.path.insert(0, PROJECT_ROOT + "/..")
@@ -104,8 +106,16 @@ INSTALLED_APPS = (
     'twitpop',
 )
 
-import djcelery
-djcelery.setup_loader()
+BROKER_BACKEND = "redis"
+BROKER_HOST = "localhost"  # Maps to redis host.
+BROKER_PORT = 6379         # Maps to redis port.
+BROKER_VHOST = "0"         # Maps to database number.
+
+CELERY_RESULT_BACKEND = "redis"
+REDIS_HOST = "localhost"
+REDIS_PORT = 6379
+REDIS_DB = 0
+REDIS_CONNECT_RETRY = True
 
 try:
     from local_settings import *

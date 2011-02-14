@@ -1,6 +1,10 @@
+import djcelery
+djcelery.setup_loader()
+
 import redis
 import tweepy
 
+from twitpop.tasks import score_tweet
 
 db = redis.Redis(host='localhost', port=6379, db=0)
 
@@ -8,8 +12,7 @@ class StreamWatcherListener(tweepy.StreamListener):
     
     def on_status(self, status):
         try:
-            db.push("tweets", status.text)
-        
+            score_tweet.delay(status.text)
         except Exception as exception:
             pass
     
