@@ -27,7 +27,7 @@ def tweet_cloud():
         tweet_cloud.append({"term": score[0], "rank": 3})
     for score in scores[9:11]:
         tweet_cloud.append({"term": score[0], "rank": 2})
-    for score in scores[12:14]:
+    for score in scores[12:len(scores)]:
         tweet_cloud.append({"term": score[0], "rank": 1)
     
     sorted_tweet_cloud = sorted(tweet_cloud, key=itemgetter("term"))
