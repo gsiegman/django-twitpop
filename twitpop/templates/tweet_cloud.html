@@ -1,5 +1,5 @@
 <ul class="tags">
     {% for term in tweet_cloud %}
-    <li class="pop{{ term.rank }}"><a href="http://search.twitter.com/?q={{ term.term|iriencode }}">{{ term.term }}</a></li>
+    <li class="pop{{ term.rank }}"><a href="http://search.twitter.com/?q={{ term.term|iriencode }}" target="_top">{{ term.term|cut:"@"|cut:"#" }}</a></li>
     {% endfor %}
 </ul>
