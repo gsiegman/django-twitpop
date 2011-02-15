@@ -2,6 +2,8 @@ import redis
 
 from django import template
 
+from random import shuffle
+
 
 register = template.Library()
 
@@ -29,6 +31,8 @@ def tweet_cloud():
             rank = 1
         
         tweet_cloud.append({"term": score[0], "rank": rank})
+    
+    shuffle(tweet_cloud)
     
     return {"tweet_cloud": tweet_cloud}
     
