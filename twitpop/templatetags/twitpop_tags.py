@@ -12,28 +12,24 @@ register = template.Library()
 def tweet_cloud():
     # @@@ Move to centralized location
     db = redis.Redis(host='localhost', port=6379, db=0)
+    
+    # @@@ Need to remove magic numbers and offer settings
     scores = db.zrevrange("twitter:search", 0, 14, withscores=True)
     
-    total_score = 0
-    for score in scores:
-        total_score += score[1]
-    
+    # @@@ The following is absurd. Please pretend you never saw
+    # this. Will be fixed shortly.
     tweet_cloud = []
-    for score in scores:
-        if (score[1]/total_score) >= 0.2:
-            rank = 5
-        elif (score[1]/total_score) >= 0.15:
-            rank = 4
-        elif (score[1]/total_score) >= 0.10:
-            rank = 3
-        elif (score[1]/total_score) >= 0.05:
-            rank = 2
-        elif (score[1]/total_score) >= 0.00:
-            rank = 1
-        
-        tweet_cloud.append({"term": score[0], "rank": rank})
+    for score in scores[0:2]:
+        tweet_cloud.append({"term": score[0], "rank": 5})
+    for score in scores[3:5]:
+        tweet_cloud.append({"term": score[0], "rank": 4})
+    for score in scores[6:8]:
+        tweet_cloud.append({"term": score[0], "rank": 3})
+    for score in scores[9:11]:
+        tweet_cloud.append({"term": score[0], "rank": 2})
+    for score in scores[12:14]:
+        tweet_cloud.append({"term": score[0], "rank": 1)
     
     sorted_tweet_cloud = sorted(tweet_cloud, key=itemgetter("term"))
     
     return {"tweet_cloud": sorted_tweet_cloud}
-    
