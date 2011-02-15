@@ -14,7 +14,7 @@ def tweet_cloud():
     db = redis.Redis(host='localhost', port=6379, db=0)
     
     # @@@ Need to remove magic numbers and offer settings
-    scores = db.zrevrange("twitter:search", 0, 14, withscores=True)
+    scores = db.zrevrange("twitter:search", 0, 15, withscores=True)
     
     # @@@ The following is absurd. Please pretend you never saw
     # this. Will be fixed shortly.
