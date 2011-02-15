@@ -32,7 +32,7 @@ def tweet_cloud():
         
         tweet_cloud.append({"term": score[0], "rank": rank})
     
-    shuffle(tweet_cloud)
+    sorted_tweet_cloud = sorted(tweet_cloud, key=itemgetter("term"))
     
-    return {"tweet_cloud": tweet_cloud}
+    return {"tweet_cloud": sorted_tweet_cloud}
     
