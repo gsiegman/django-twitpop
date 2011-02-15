@@ -19,15 +19,15 @@ def tweet_cloud():
     # @@@ The following is absurd. Please pretend you never saw
     # this. Will be fixed shortly.
     tweet_cloud = []
-    for score in scores[1:3]:
+    for score in scores[0:3]:
         tweet_cloud.append({"term": score[0], "rank": 5})
-    for score in scores[3:5]:
+    for score in scores[3:6]:
         tweet_cloud.append({"term": score[0], "rank": 4})
-    for score in scores[5:7]:
+    for score in scores[6:9]:
         tweet_cloud.append({"term": score[0], "rank": 3})
-    for score in scores[7:9]:
+    for score in scores[9:12]:
         tweet_cloud.append({"term": score[0], "rank": 2})
-    for score in scores[9:len(scores)+1]:
+    for score in scores[12:len(scores)+1]:
         tweet_cloud.append({"term": score[0], "rank": 1})
     
     sorted_tweet_cloud = sorted(tweet_cloud, key=itemgetter("term"))
