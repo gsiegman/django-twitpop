@@ -2,6 +2,7 @@ import redis
 
 from django import template
 
+from operator import itemgetter
 from random import shuffle
 
 
