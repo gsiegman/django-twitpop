@@ -1,1 +1,8 @@
 twitpop
+
+Twitter username and password stored in dictionary in Django settings file:
+
+    TWITPOP = {
+        'USERNAME': 'yourtwitterusername',
+	'PASSWORD': 'yourtwitterpassword',
+    }
