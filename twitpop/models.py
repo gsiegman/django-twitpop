@@ -14,3 +14,9 @@ class TwitterSearchTerm(models.Model):
         db = redis.Redis(host="localhost", port=6379, db=0)
         db.zadd("twitter:search", self.term, 0)
         super(TwitterSearchTerm, self).save(*args, **kwargs)
+
+
+    def delete(self, *args, **kwargs):
+    	db = redis.Redis(host="localhost", port=6379, db=0)
+    	db.zrem("twitter:search", self.term, 0)
+    	super(TwitterSearchTerm, self).save(*args, **kwargs)
