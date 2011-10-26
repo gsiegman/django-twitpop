@@ -21,4 +21,4 @@ class TwitterSearchTerm(models.Model):
 @receiver(post_delete, sender=TwitterSearchTerm)
 def delete_term_from_redis(sender, instance, **kwargs):
     db = redis.Redis(host="localhost", port=6379, db=0)
-    db.zrem("twitter:search", self.term, 0)
+    db.zrem("twitter:search", instance.term, 0)
