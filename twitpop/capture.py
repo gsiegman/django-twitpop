@@ -4,7 +4,6 @@ djcelery.setup_loader()
 import redis
 import tweepy
 
-from django.conf import settings
 from twitpop.tasks import score_tweet
 
 db = redis.Redis(host='localhost', port=6379, db=0)
