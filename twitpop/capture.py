@@ -25,8 +25,8 @@ class StreamWatcherListener(tweepy.StreamListener):
 
 
 def main():
-    username = settings.get('TWITPOP')['USERNAME']
-    password = settings.get('TWITPOP')['PASSWORD']
+    username = db.get("twitter:username")
+    password = db.get("twitter:password")
     stream = tweepy.Stream(username, password, StreamWatcherListener(), timeout=None)
     
     track_list = db.zrange("twitter:search", 0, -1)
