@@ -1,8 +1,7 @@
 django==1.2.5
 south==0.7.3
 pil
-tweepy
+tweetstream==1.1.0
 redis
 psycopg2
 django-celery==2.2.3
-
